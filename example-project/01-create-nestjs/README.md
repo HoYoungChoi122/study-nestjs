@@ -23,7 +23,7 @@ localhost:3000/ 을 브라우저 도메인에 입력시 HelloWorld 보임
 
 ## ERROR
 
-```ERROR
+```bash
  
 already in user :::3000
 오류 설명 : 포트번호가 겹침
