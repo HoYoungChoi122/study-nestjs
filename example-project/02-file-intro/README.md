@@ -1,63 +1,38 @@
-## install & create Project Nest.js
+## 파일 Tree 설명
 
-## 설치
+## 파일 Tree 요약
 
 ```bash
- NPM 다운 및 프로젝트 생성 방법 
-1. 빈 프로젝트 생성
-
-2. 터미널로 아래 명령어 입력
-$ npm i -g @nestjs/cli
-
-3. nest new 프로젝트이름 으로 프로젝트 생성 ( 이때 옵션은 선택 npm , yarn )
---예제-- 
-$ nest new project-01
-$ nest new example-project/01-create-nestjs
-
-4. 터미널에 npm start 입력시 실행 가능  ( package.json 에 start 항목 )
-$ npm start 
-localhost:3000/ 을 브라우저 도메인에 입력시 HelloWorld 보임
-
-해당 프로젝트에서 실행해야만 npm start 명령어 적용 가능 ( cd 경로 )
+핵심 기능 : CONTROLLER , SERVICE , MODULE 
+CONTROLLER : 정해진 router 값 ( /user/login , /board/insert )등을 받고 그에 대한 처리 값을 반환 해주는 곳
+SERVICE : CONTROLLER에서 요청되어 설정된 로직에 따라 움직이는 곳
+MODULE : 기능별 CONTOLLER 와 SERVICE가 정의되어있는 곳
 ```
 
-## ERROR
+## CONTROLLER 
 
 ```bash
+컨트롤러의 목적은 특정요청을 "수신"하는 것 기본 컨트롤러를 생성하기위해 클래스와 데코레이션을 사용함
+ * 데코레이터 ( @Controller , @Get, @Post등 ) = Nest로부터 IOC(의존성을 주입받은 컴포넌트
  
-already in user :::3000
-오류 설명 : 포트번호가 겹침
-오류 해결 : src/main.ts 파일의 app.listen(3000) << 3000을  수정하여줌 (포트번호를 의미) 
+$ nest g controller 생성이름 을 통해 생성할 수 있다.
 
-```## install & create Project Nest.js
-
-## 설치
-
-```bash
- NPM 다운 및 프로젝트 생성 방법 
-1. 빈 프로젝트 생성
-
-2. 터미널로 아래 명령어 입력
-$ npm i -g @nestjs/cli
-
-3. nest new 프로젝트이름 으로 프로젝트 생성 ( 이때 옵션은 선택 npm , yarn )
---예제-- 
-$ nest new project-01
-$ nest new example-project/01-create-nestjs
-
-4. 터미널에 npm start 입력시 실행 가능  ( package.json 에 start 항목 )
-$ npm start 
-localhost:3000/ 을 브라우저 도메인에 입력시 HelloWorld 보임
-
-해당 프로젝트에서 실행해야만 npm start 명령어 적용 가능 ( cd 경로 )
+ex) $ nest g controller users
 ```
 
-## ERROR
+## users.controller.ts
+```javascript
+import { Get, Controller } from '@nestjs/common';
 
-```bash
- 
-already in user :::3000
-오류 설명 : 포트번호가 겹침
-오류 해결 : src/main.ts 파일의 app.listen(3000) << 3000을  수정하여줌 (포트번호를 의미) 
+//<  @nestjs/common으로부터 Controller를 import 를 받아야함
+@Controller('users') // /users에 대한 라우터값을 받아 여기 컨트롤러로 가져옴
+export class UsersController {
 
+    @Get() //<  @nestjs/common으로부터 Get을 import 를 받아야함
+    findAll(): string{
+        return "기본경로 >/users< 에 대한 요청 처리 메소드 "
+    }
+
+}
+//결과 = > 
 ```
