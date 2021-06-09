@@ -13,7 +13,7 @@
     * app ( module,service,controller main 실행시 실행되는 부분 )
     * main( main 실행 파일 app에 대한 module이 장착되어 있음 ) 
   - test ( test 파일들 )
-    * othesFiles ( 설정 파일들 )
+  - othesFiles ( 설정 파일들 )
 
 
 ```bash
