@@ -20,3 +20,13 @@ localhost:3000/ 을 브라우저 도메인에 입력시 HelloWorld 보임
 
 해당 프로젝트에서 실행해야만 npm start 명령어 적용 가능 ( cd 경로 )
 ```
+
+## ERROR
+
+```ERROR
+ 
+already in user :::3000
+오류 설명 : 포트번호가 겹침
+오류 해결 : src/main.ts 파일의 app.listen(3000) << 3000을  수정하여줌 (포트번호를 의미) 
+
+```
