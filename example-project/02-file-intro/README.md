@@ -27,7 +27,7 @@ MODULE : 기능별 CONTOLLER 와 SERVICE가 정의되어있는 곳
 
 ```bash
 컨트롤러의 목적은 특정요청을 "수신"하는 것 기본 컨트롤러를 생성하기위해 클래스와 데코레이션을 사용함
- * 데코레이터 ( @Controller , @Get, @Post등 ) = Nest로부터 IOC(의존성을 주입받은 컴포넌트
+ * 데코레이터 ( @Controller , @Get, @Post등 ) = Nest로부터 IOC(의존성)를 주입받은 컴포넌트
  
 $ nest g controller 생성이름 을 통해 생성할 수 있다.
 
