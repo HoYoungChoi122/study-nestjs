@@ -34,5 +34,6 @@ export class UsersController {
     }
 
 }
-//결과 = > 
+// 브라우저를 통해 실행가능 input url : localhost:3000/users
+//결과 = > 기본경로 >/users< 에 대한 요청 처리 메소드
 ```
