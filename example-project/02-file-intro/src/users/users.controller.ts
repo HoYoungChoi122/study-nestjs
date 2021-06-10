@@ -1,4 +1,4 @@
-import {Get, Post, Controller, Query} from '@nestjs/common';
+import {Get, Post, Controller, Query , ParseIntPipe,Param} from '@nestjs/common';
 import {FindUserDto, LoginUserDto} from "./dto/userDto";
 import e from "express";
 
@@ -83,8 +83,6 @@ export class UsersController {
 
         return "해당 유저의 정보입니다."
     }
-
-
 
 
 }
