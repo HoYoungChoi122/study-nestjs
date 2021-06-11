@@ -45,12 +45,12 @@ export default new Vuex.Store({
   },
   getters: {
       getUserToken : (state, getters, rootState) => state.userToken,
-      getUserObjectId : (state, getters, rootState) => state._id,
-      getUserId : (state, getters, rootState) => state.userId,
-      getUserName : (state, getters, rootState) => state.userName,
-      getUserEmail : (state, getters, rootState) => state.userEmail,
-      getUserMobile : (state, getters, rootState) => state.userMobile,
-      getUserAge : (state, getters, rootState) => state.userAge,
+      getUserObjectId : (state) => state._id,
+      getUserId : (state) => state.userId,
+      getUserName : (state) => state.userName,
+      getUserEmail : (state) => state.userEmail,
+      getUserMobile : (state) => state.userMobile,
+      getUserAge : (state) => state.userAge,
   },
   actions: {
       async login({commit},user){
