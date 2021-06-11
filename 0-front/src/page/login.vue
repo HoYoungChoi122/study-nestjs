@@ -37,13 +37,11 @@ export default class Login extends Vue {
   }
 
 
-  async validate(){
+  async validate() {
 
     const sendData = this.sendData();
 
-    await console.log(sendData);
-
-    await this.$store.dispatch('login',sendData);
+    await this.$store.dispatch('login', sendData);
   }
 
 
