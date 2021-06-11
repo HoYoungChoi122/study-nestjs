@@ -56,7 +56,7 @@ export default new Vuex.Store({
       async login({commit},user){
 
           const token = "";
-          const userId = "";
+          const userId = user.userId;
           const userName = "";
           const userEmail = "";
           const userMobile = "";
@@ -79,9 +79,6 @@ export default new Vuex.Store({
               await cookieSet('userMobile', userMobile);
               await cookieSet('_id', _id);
 
-
-              console.log(user);
-              console.log(Vue.$cookies)
           }catch (e){
               console.log(e.message);
           }

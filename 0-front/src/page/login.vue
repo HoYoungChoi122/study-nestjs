@@ -42,6 +42,10 @@ export default class Login extends Vue {
     const sendData = this.sendData();
 
     await this.$store.dispatch('login', sendData);
+    console.log('=====================')
+    console.log(this.$store.getters.getUserId);
+
+
   }
 
 
