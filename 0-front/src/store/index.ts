@@ -72,6 +72,7 @@ export default new Vuex.Store({
               commit('SET_USER_ID',userId);
               commit('SET_USER_TOKEN',token);
 
+
               await cookieSet('userToken',token);
               await cookieSet('userId', userId);
               await cookieSet('userName', userName);
