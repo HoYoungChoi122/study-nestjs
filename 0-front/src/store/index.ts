@@ -55,6 +55,13 @@ export default new Vuex.Store({
   actions: {
       async login({commit},user){
 
+          const { data } = await Vue.axios({
+              url:'/user/login',
+              method:'POST',
+              data : user
+          })
+
+
           const token = "";
           const userId = user.userId;
           const userName = "";
@@ -80,6 +87,7 @@ export default new Vuex.Store({
               await cookieSet('_id', _id);
 
           }catch (e){
+              console.log("LOGIN중 에러 발생")
               console.log(e.message);
           }
 
