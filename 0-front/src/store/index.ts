@@ -53,43 +53,45 @@ export default new Vuex.Store({
       getUserAge : (state) => state.userAge,
   },
   actions: {
-      async login({commit},user){
+      async add({commit},user){
 
           const { data } = await Vue.axios({
-              url:'/user/login',
+              url:'/test/add',
               method:'POST',
               data : user
           })
 
+          console.log(data);
 
-          const token = "";
-          const userId = user.userId;
-          const userName = "";
-          const userEmail = "";
-          const userMobile = "";
-          const userAge = "";
-          const _id = "";
 
-          try {
-              commit('SET_USER_OBJECT_ID',_id);
-              commit('SET_USER_AGE',userAge);
-              commit('SET_USER_MOBILE',userMobile);
-              commit('SET_USER_EMAIL',userEmail);
-              commit('SET_USER_NAME',userName);
-              commit('SET_USER_ID',userId);
-              commit('SET_USER_TOKEN',token);
-
-              await cookieSet('userToken',token);
-              await cookieSet('userId', userId);
-              await cookieSet('userName', userName);
-              await cookieSet('userEmail', userEmail);
-              await cookieSet('userMobile', userMobile);
-              await cookieSet('_id', _id);
-
-          }catch (e){
-              console.log("LOGIN중 에러 발생")
-              console.log(e.message);
-          }
+          // const token = "";
+          // const userId = user.userId;
+          // const userName = "";
+          // const userEmail = "";
+          // const userMobile = "";
+          // const userAge = "";
+          // const _id = "";
+          //
+          // try {
+          //     commit('SET_USER_OBJECT_ID',_id);
+          //     commit('SET_USER_AGE',userAge);
+          //     commit('SET_USER_MOBILE',userMobile);
+          //     commit('SET_USER_EMAIL',userEmail);
+          //     commit('SET_USER_NAME',userName);
+          //     commit('SET_USER_ID',userId);
+          //     commit('SET_USER_TOKEN',token);
+          //
+          //     await cookieSet('userToken',token);
+          //     await cookieSet('userId', userId);
+          //     await cookieSet('userName', userName);
+          //     await cookieSet('userEmail', userEmail);
+          //     await cookieSet('userMobile', userMobile);
+          //     await cookieSet('_id', _id);
+          //
+          // }catch (e){
+          //     console.log("LOGIN중 에러 발생")
+          //     console.log(e.message);
+          // }
 
       }
   },

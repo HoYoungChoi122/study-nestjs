@@ -9,10 +9,12 @@
         <b-col cols="3"><b-input type="text" v-model="userPassword" /></b-col>
       </b-row>
       <b-row class="justify-content-center">
-        <b-col md="auto" cols="3"><b-button  variant="info" @click="validate">로그인</b-button></b-col>
+        <b-col cols="1" >USER NAME</b-col>
+        <b-col cols="3"><b-input type="text" v-model="userName" /></b-col>
       </b-row>
-    <button @click="getUser">유저정보</button>
-    <div>{{userInfo}}</div>
+      <b-row class="justify-content-center">
+        <b-col md="auto" cols="3"><b-button  variant="info" @click="validate">가입</b-button></b-col>
+      </b-row>
   </div>
 </template>
 
@@ -23,13 +25,13 @@ import { Component, Vue } from "vue-property-decorator";
 export default class Login extends Vue {
   userId: string;
   userPassword: string;
-  userInfo :any;
+  userName : string;
 
   constructor() {
     super();
     this.userId = "";
     this.userPassword = "";
-    this.userInfo = "";
+    this.userName = "";
 
   }
 
@@ -37,7 +39,7 @@ export default class Login extends Vue {
     return {
       userId : this.userId,
       userPw : this.userPassword,
-      userName : "hoyoung",
+      userName : this.userName,
     }
   }
 
@@ -45,25 +47,19 @@ export default class Login extends Vue {
   async validate() {
 
     const sendData = this.sendData();
-
-    await this.$store.dispatch('add', sendData);
-
-
-  }
-
-  async getUser(){
-    const { data } = await Vue.axios({
-      url: "/test/find",
-      method : 'GET',
-    })
-    console.log(data);
-
+    try{
+      const { data } = await Vue.axios({
+        url : "/users/join",
+        method : "POST",
+        data : sendData,
+      })
+    } catch (e) {
+      console.log(e.message);
+    }
+    // await this.$store.dispatch('add', sendData);
 
 
   }
-
-
-
 
 
 

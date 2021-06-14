@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { JoinUserDto } from './dto/join-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
-export class UserService {
-  create(createUserDto: CreateUserDto) {
+export class UsersService {
+  create(createUserDto: JoinUserDto) {
     return 'This action adds a new user';
   }
 
   findAll() {
-    return `This action returns all user`;
+    return `This action returns all users`;
   }
 
   findOne(id: number) {

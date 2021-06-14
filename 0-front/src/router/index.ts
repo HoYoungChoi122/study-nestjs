@@ -19,6 +19,11 @@ const routes: Array<RouteConfig> = [
     name: 'index',
     component: () => import('../page/login.vue')
   },
+  {
+    path: '/join',
+    name: 'userJoin',
+    component: () => import('../page/userJoin.vue')
+  },
 ]
 
 const router = new VueRouter({
