@@ -4,8 +4,21 @@ import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UsersService {
-  create(createUserDto: JoinUserDto) {
-    return 'This action adds a new user';
+  private users : JoinUserDto[] = [];
+
+  create(user: JoinUserDto) {
+    try{
+      this.users.push(user)
+      return {
+        result : true,
+        message: "가입 성공"
+      }
+    } catch (e){
+      return {
+        result : false,
+        message : e.message
+      }
+    }
   }
 
   findAll() {

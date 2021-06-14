@@ -9,10 +9,8 @@
         <b-col cols="3"><b-input type="text" v-model="userPassword" /></b-col>
       </b-row>
       <b-row class="justify-content-center">
-        <b-col md="auto" cols="3"><b-button  variant="info" @click="validate">로그인</b-button></b-col>
+        <b-col md="auto" cols="3"><b-button  variant="dark" @click="$router.push('/join') ">회원가입</b-button>&nbsp;<b-button  variant="info" @click="validate">로그인</b-button></b-col>
       </b-row>
-    <button @click="getUser">유저정보</button>
-    <div>{{userInfo}}</div>
   </div>
 </template>
 
@@ -23,13 +21,11 @@ import { Component, Vue } from "vue-property-decorator";
 export default class Login extends Vue {
   userId: string;
   userPassword: string;
-  userInfo :any;
 
   constructor() {
     super();
     this.userId = "";
     this.userPassword = "";
-    this.userInfo = "";
 
   }
 
@@ -46,25 +42,10 @@ export default class Login extends Vue {
 
     const sendData = this.sendData();
 
-    await this.$store.dispatch('add', sendData);
+    await this.$store.dispatch('join', sendData);
 
 
   }
-
-  async getUser(){
-    const { data } = await Vue.axios({
-      url: "/test/find",
-      method : 'GET',
-    })
-    console.log(data);
-
-
-
-  }
-
-
-
-
 
 
 

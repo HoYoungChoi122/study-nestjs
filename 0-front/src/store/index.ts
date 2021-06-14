@@ -53,7 +53,7 @@ export default new Vuex.Store({
       getUserAge : (state) => state.userAge,
   },
   actions: {
-      async add({commit},user){
+      async join({commit},user){
 
           const { data } = await Vue.axios({
               url:'/test/add',

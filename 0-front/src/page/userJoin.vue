@@ -15,6 +15,7 @@
       <b-row class="justify-content-center">
         <b-col md="auto" cols="3"><b-button  variant="info" @click="validate">가입</b-button></b-col>
       </b-row>
+      <h1>{{message}}</h1>
   </div>
 </template>
 
@@ -26,12 +27,14 @@ export default class Login extends Vue {
   userId: string;
   userPassword: string;
   userName : string;
+  message : string;
 
   constructor() {
     super();
     this.userId = "";
     this.userPassword = "";
     this.userName = "";
+    this.message = "";
 
   }
 
@@ -47,12 +50,20 @@ export default class Login extends Vue {
   async validate() {
 
     const sendData = this.sendData();
+
     try{
       const { data } = await Vue.axios({
         url : "/users/join",
         method : "POST",
         data : sendData,
       })
+
+      if(data.result){
+        await this.$router.push('/login');
+      }else{
+        this.message = data.message;
+      }
+
     } catch (e) {
       console.log(e.message);
     }
