@@ -119,7 +119,9 @@ try{
 
 
 
-
+//XXXXXXXXX
+// $ npm install --save @nestjs/passport passport passport-local
+// $ npm install --save-dev @types/passport-local
 
 ```
 
