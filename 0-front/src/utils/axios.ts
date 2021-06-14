@@ -10,5 +10,59 @@ const instance :AxiosInstance = axios.create({
     },
     timeout: 20000
 });
+instance.interceptors.request.use(config  => {
+    // if (Vue.$cookies) {
+    //     const token = Vuex.getters.getAccessToken;
+    //     config.headers['Authorization'] = `Bearer ${token}`;
+    // }
+    console.log("요청")
+    console.log(config)
+    return config;
+})
+instance.interceptors.response.use(response => {
+    console.log("받음");
+    console.log(response);
+    const {data} = response
+
+    // const {result, error} = data
+    // if (!result) {
+    //     Vue.$toast.open({
+    //         message: error,
+    //         type: 'error',
+    //         duration: 5000
+    //     });
+    // }
+
+    return response
+}, error => {
+    const {response: { status }, request, message } = error
+    /*if (error.response) {
+        const {data} = error.response
+        console.log(data)
+        if (status === 400) {
+            Vue.$toast.open({
+                message: data.message,
+                type: 'error',
+                duration: 5000
+            });
+        }
+        return
+    }*/
+
+    // if (status === 401) {
+    //     Vue.$toast.open({
+    //         message: `토큰이 만료되었습니다.`,
+    //         type: 'error',
+    //         duration: 5000
+    //     });
+    // } else  {
+    //     Vue.$toast.open({
+    //         message,
+    //         type: 'error',
+    //         duration: 5000
+    //     });
+    // }
+    return error
+});
 
 export const ins = instance

@@ -6,7 +6,21 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getHello(): any {
+    console.log("controller start")
+    return {
+      result : false,
+      message : "안녕"
+    };
   }
+  @Get('/test')
+  getTest() : any{
+    console.log("controller start")
+    return {
+      test:true,
+      message : "test message"
+    }
+  }
+
+
 }
