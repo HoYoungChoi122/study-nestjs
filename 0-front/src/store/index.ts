@@ -56,7 +56,7 @@ export default new Vuex.Store({
       async join({commit},user){
 
           const { data } = await Vue.axios({
-              url:'/test/add',
+              url:'/users/login',
               method:'POST',
               data : user
           })

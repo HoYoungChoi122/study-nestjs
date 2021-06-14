@@ -19,6 +19,7 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class Login extends Vue {
+
   userId: string;
   userPassword: string;
 
@@ -33,7 +34,6 @@ export default class Login extends Vue {
     return {
       userId : this.userId,
       userPw : this.userPassword,
-      userName : "hoyoung",
     }
   }
 
