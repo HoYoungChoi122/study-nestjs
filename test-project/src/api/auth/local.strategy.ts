@@ -6,14 +6,26 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
     constructor(private authService: AuthService) {
-        super();
+        super({
+            usernameField: 'userId',
+            passwordField: 'userPw',
+        });
     }
 
-    async validate(username: string, password: string): Promise<any> {
-        const user = await this.authService.validateUser(username, password);
-        if (!user) {
-            throw new UnauthorizedException();
+    async validate(userId: string, userPw: string): Promise<any> {
+        try{
+
+            const user = await this.authService.validateUser(userId, userPw);
+            if (!user) {
+                throw new UnauthorizedException("이름이나 비밀번호가 틀렸습니다.");
+            }
+
+            return user;
+
+        }catch (e){
+
+            return  { LoginError : e.message || e} ;
+
         }
-        return user;
     }
 }

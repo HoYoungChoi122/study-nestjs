@@ -15,13 +15,9 @@ instance.interceptors.request.use(config  => {
     //     const token = Vuex.getters.getAccessToken;
     //     config.headers['Authorization'] = `Bearer ${token}`;
     // }
-    console.log("요청")
-    console.log(config)
     return config;
 })
 instance.interceptors.response.use(response => {
-    console.log("받음");
-    console.log(response);
     const {data} = response
 
     // const {result, error} = data

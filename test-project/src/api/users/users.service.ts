@@ -9,23 +9,24 @@ export class UsersService {
   // private users : JoinUserDto[] = [];
 
 
-  private readonly users: JoinUserDto[] = [
+  private readonly users =  [
     {
       userId: "12",
       userPw: '12',
-      userName: 'ho young',
+      userName: 'hoyoung',
     },
     {
-      userId: "1234",
-      userPw: "1234",
-      userName: 'lelero',
+      userId: "john",
+      userPw: "changme",
+      userName: 'john',
     },
     {
-      userId: "hychoi",
+      userId: "123",
       userPw: '2613',
       userName: 'choi ho young',
     },
   ];
+
 
 
   create(user: JoinUserDto) {
@@ -44,8 +45,6 @@ export class UsersService {
   }
 
   loginUser({ userId  , userPw }) {
-
-
     const user  = this.users.find( e => e.userId ===userId && e.userPw === userPw );
 
     if(user){
@@ -63,8 +62,10 @@ export class UsersService {
       
   }
 
-  async findOne(userName: string): Promise<User | undefined> {
-    return this.users.find(user => user.userName === userName);
+  async findOne(userId: string): Promise<User | undefined> {
+    // console.log("here")
+    return this.users.find(user => user.userId === userId);
+    // return this.users1.find(user => user.username === username);
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {

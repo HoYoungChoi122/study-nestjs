@@ -11,6 +11,7 @@
       <b-row class="justify-content-center">
         <b-col md="auto" cols="3"><b-button  variant="dark" @click="$router.push('/join') ">회원가입</b-button>&nbsp;<b-button  variant="info" @click="validate">로그인</b-button></b-col>
       </b-row>
+    <button @click="indexBack">backend conntect test</button>
   </div>
 </template>
 
@@ -32,9 +33,18 @@ export default class Login extends Vue {
 
   sendData(){
     return {
-      userId : this.userId,
-      userPw : this.userPassword,
+      username : this.userId,
+      password : this.userPassword,
     }
+  }
+
+  async indexBack(){
+    const {data} = await Vue.axios({
+      url : '/index',
+      method : "GET"
+    })
+
+    console.log(data);
   }
 
 
@@ -42,7 +52,7 @@ export default class Login extends Vue {
 
     const sendData = this.sendData();
 
-    await this.$store.dispatch('join', sendData);
+    await this.$store.dispatch('login', sendData);
 
 
   }
