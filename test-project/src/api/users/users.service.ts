@@ -2,11 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { JoinUserDto } from './dto/join-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
+export type User = any;
+
 @Injectable()
 export class UsersService {
-  private users : JoinUserDto[] = [];
+  // private users : JoinUserDto[] = [];
 
-  private readonly userTest = [
+
+  private readonly users: JoinUserDto[] = [
     {
       userId: "12",
       userPw: '12',
@@ -60,8 +63,8 @@ export class UsersService {
       
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(userName: string): Promise<User | undefined> {
+    return this.users.find(user => user.userName === userName);
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
