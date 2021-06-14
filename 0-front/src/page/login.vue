@@ -33,8 +33,8 @@ export default class Login extends Vue {
 
   sendData(){
     return {
-      username : this.userId,
-      password : this.userPassword,
+      userId : this.userId,
+      userPw : this.userPassword,
     }
   }
 

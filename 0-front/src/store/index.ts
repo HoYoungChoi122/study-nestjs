@@ -55,10 +55,15 @@ export default new Vuex.Store({
   actions: {
       async login({commit},user){
           console.log(user);
+
+          // data = @Body
+          // params =
+          // @query = url id,pw :id
+
           const { data } = await Vue.axios({
               url:'/auth/login',
-              method:'GET',
-              data : user
+              method:'POST',
+              params : user
           })
           console.log(data);
 

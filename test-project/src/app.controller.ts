@@ -10,10 +10,15 @@ export class AppController {
   }
 
   @UseGuards(AuthGuard('local'))
-  @Get('/auth/login')
+  @Post('/auth/login')
   async login(@Request() req) {
     return req.user;
 
+  }
+
+  @Get('/auth/test')
+  async loginTest(@Query() q : any){
+        return q;
   }
 
   // @Get('/auth/login')
