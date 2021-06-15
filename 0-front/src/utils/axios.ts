@@ -11,10 +11,10 @@ const instance :AxiosInstance = axios.create({
     timeout: 20000
 });
 instance.interceptors.request.use(config  => {
-    // if (Vue.$cookies) {
-    //     const token = Vuex.getters.getAccessToken;
-    //     config.headers['Authorization'] = `Bearer ${token}`;
-    // }
+    if (Vue.$cookies) {
+        const token = Vuex.getters.getAccessToken;
+        config.headers['Authorization'] = `Bearer ${token}`;
+    }
     return config;
 })
 instance.interceptors.response.use(response => {

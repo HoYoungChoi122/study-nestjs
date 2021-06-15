@@ -12,7 +12,7 @@ Vue.$cookies.config('1d');
 
 export default new Vuex.Store({
   state: {
-    userToken : Vue.$cookies.get("userToken")||'',
+    access_token : Vue.$cookies.get("access_token")||'',
     _id : Vue.$cookies.get("_id")||'',
     userId : Vue.$cookies.get("userId")||'',
     userName : Vue.$cookies.get("userName")||'',
@@ -22,7 +22,7 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_USER_TOKEN(state,token){
-        state.userToken = token;
+        state.access_token = token;
     },
     SET_USER_ID(state,userId){
         state.userId = userId;
@@ -44,7 +44,7 @@ export default new Vuex.Store({
     }
   },
   getters: {
-      getUserToken : (state, getters, rootState) => state.userToken,
+      getAccessToken : (state) => state.access_token,
       getUserObjectId : (state) => state._id,
       getUserId : (state) => state.userId,
       getUserName : (state) => state.userName,
@@ -65,10 +65,10 @@ export default new Vuex.Store({
               method:'POST',
               params : user
           })
-          console.log(data);
+          // console.log(data);
 
-
-          // const token = "";
+          const {access_token}  = data
+          const token = access_token;
           // const userId = user.userId;
           // const userName = "";
           // const userEmail = "";
@@ -76,26 +76,27 @@ export default new Vuex.Store({
           // const userAge = "";
           // const _id = "";
           //
-          // try {
+          try {
           //     commit('SET_USER_OBJECT_ID',_id);
           //     commit('SET_USER_AGE',userAge);
           //     commit('SET_USER_MOBILE',userMobile);
           //     commit('SET_USER_EMAIL',userEmail);
           //     commit('SET_USER_NAME',userName);
           //     commit('SET_USER_ID',userId);
-          //     commit('SET_USER_TOKEN',token);
+              commit('SET_USER_TOKEN',token);
           //
-          //     await cookieSet('userToken',token);
+              await cookieSet('access_token',token);
           //     await cookieSet('userId', userId);
           //     await cookieSet('userName', userName);
           //     await cookieSet('userEmail', userEmail);
           //     await cookieSet('userMobile', userMobile);
           //     await cookieSet('_id', _id);
           //
-          // }catch (e){
+          }catch (e){
           //     console.log("LOGIN중 에러 발생")
-          //     console.log(e.message);
-          // }
+              console.log(e.message);
+          }
+          console.log(token);
 
       }
   },

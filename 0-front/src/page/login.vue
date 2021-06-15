@@ -40,7 +40,7 @@ export default class Login extends Vue {
 
   async indexBack(){
     const {data} = await Vue.axios({
-      url : '/index',
+      url : '/profile',
       method : "GET"
     })
 
