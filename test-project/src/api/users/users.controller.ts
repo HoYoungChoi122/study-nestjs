@@ -20,9 +20,6 @@ export class UsersController {
     const { result , user } = await this.usersService.loginUser(userInfo);
     // const payload = await "auth서비스에서 token 만들기";
 
-
-
-
     return {
       result,
       ...user,

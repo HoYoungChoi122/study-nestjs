@@ -11,6 +11,7 @@ const instance :AxiosInstance = axios.create({
     timeout: 20000
 });
 instance.interceptors.request.use(config  => {
+    //토큰에 대해 header에 담 request 될때 보냄
     if (Vue.$cookies) {
         const token = Vuex.getters.getAccessToken;
         config.headers['Authorization'] = `Bearer ${token}`;
